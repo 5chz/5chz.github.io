@@ -1,173 +1,108 @@
 ---
-title: Getting Started
-author: cotes
-date: 2019-08-09 20:55:00 +0800
-categories: [Blogging, Tutorial]
-tags: [getting started]
-pin: true
+title: TITLE
+date: 2023-01-18 
+Categories: [Categorie_test_top, categorie_test_sub]
+tags: [tag_test]     # TAG names should always be lowercase
 ---
 
-## Prerequisites
+# 11.- OpenAdmin
 
-Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`. In addition, [Git](https://git-scm.com/) is also required to be installed.
+Difficulty: Easy
+Done: Yes
+End Date: 10/12/2022
+OS: Linux
+Puertos: 22,80
+Start Date: 08/12/2022
+Topic Learn: Pivoting, SSH, LFI,
 
-## Installation
+# Scanning and enumeration
 
-### Creating a New Site
+/_images/test.jpg
 
-There are two ways to create a new repository for this theme:
+- Nmap
+    
+    ```ruby
+    # Nmap 7.93 scan initiated Thu Dec  8 06:46:13 2022 as: nmap -sCV -p22,80 -oN targeted 10.10.10.171
+    Nmap scan report for 10.10.10.171
+    Host is up (0.056s latency).
+    
+    PORT   STATE SERVICE VERSION
+    22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+    | ssh-hostkey: 
+    |   2048 4b98df85d17ef03dda48cdbc9200b754 (RSA)
+    |   256 dceb3dc944d118b122b4cfdebd6c7a54 (ECDSA)
+    |_  256 dcadca3c11315b6fe6a489347c9be550 (ED25519)
+    80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+    |_http-title: Apache2 Ubuntu Default Page: It works
+    |_http-server-header: Apache/2.4.29 (Ubuntu)
+    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+    
+    Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+    # Nmap done at Thu Dec  8 06:46:35 2022 -- 1 IP address (1 host up) scanned in 21.68 seconds
+    ```
+    
+- Whatweb
+    
+	```ruby
+    [http://10.10.10.171](http://10.10.10.171/) [200 OK] Apache[2.4.29], Country[RESERVED][ZZ], HTTPServer[Ubuntu Linux][Apache/2.4.29 (Ubuntu)], IP[10.10.10.171], Title[Apache2 Ubuntu Default Page: It works]
+    ```
 
-- [**Using the Chirpy Starter**](#option-1-using-the-chirpy-starter) - Easy to upgrade, isolates irrelevant project files so you can focus on writing.
-- [**Forking on GitHub**](#option-2-forking-on-github) - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.
+# Gaining access
 
-#### Option 1. Using the Chirpy Starter
+- s
 
-Create a new repository from the [**Chirpy Starter**][use-starter] and name it `<GH_USERNAME>.github.io`, where `GH_USERNAME` represents your GitHub username.
+# **Maintaining access**
 
-#### Option 2. Forking on GitHub
+- Subiendo archivo shell.php remoto y ejecutando
+    
+    ![Untitled](11%20-%20OpenAdmin%203a541ae28bc643328dcf7fe897b27171/Untitled.png)
+    
 
-[Fork **Chirpy**](https://github.com/cotes2020/jekyll-theme-chirpy/fork) on GitHub and rename it to `<GH_USERNAME>.github.io`. Please note that the default branch code is in development.  If you want the site to be stable, please switch to the [latest tag][latest-tag] and start writing.
+# Privilege escalation
 
-And then execute:
+- mysql user
+    
+    'db_login' => 'ona_sys',
+    'db_passwd' => 'n1nj4W4rri0R!',
+    
+- Normal user
+    
+    kG0UYIcGyaxupjQqaS2e1HqbhwRLlNctW2HfJeaKUjWZH4usiD9AtTnIKVUOpZN8
+    ad/StMWJ+MkQ5MnAMJglQeUbRxcBP6++Hh251jMcg8ygYcx1UMD03ZjaRuwcf0YO
+    ShNbbx8Euvr2agjbF+ytimDyWhoJXU+UpTD58L+SIsZzal9U8f+Txhgq9K2KQHBE
+    6xaubNKhDJKs/6YJVEHtYyFbYSbtYt4lsoAyM8w+pTPVa3LRWnGykVR5g79b7lsJ
+    ZnEPK07fJk8JCdb0wPnLNy9LsyNxXRfV3tX4MRcjOXYZnG2Gv8KEIeIXzNiD5/Du
+    y8byJ/3I3/EsqHphIHgD3UfvHy9naXc/nLUup7s0+WAZ4AUx/MJnJV2nN8o69JyI
+    9z7V9E4q/aKCh/xpJmYLj7AmdVd4DlO0ByVdy0SJkRXFaAiSVNQJY8hRHzSS7+k4
+    piC96HnJU+Z8+1XbvzR93Wd3klRMO7EesIQ5KKNNU8PpT+0lv/dEVEppvIDE/8h/
+    /U1cPvX9Aci0EUys3naB6pVW8i/IY9B6Dx6W4JnnSUFsyhR63WNusk9QgvkiTikH
+    40ZNca5xHPij8hvUR2v5jGM/8bvr/7QtJFRCmMkYp7FMUB0sQ1NLhCjTTVAFN/AZ
+    fnWkJ5u+To0qzuPBWGpZsoZx5AbA4Xi00pqqekeLAli95mKKPecjUgpm+wsx8epb
+    9FtpP4aNR8LYlpKSDiiYzNiXEMQiJ9MSk9na10B5FFPsjr+yYEfMylPgogDpES80
+    X1VZ+N7S8ZP+7djB22vQ+/pUQap3PdXEpg3v6S4bfXkYKvFkcocqs8IivdK1+UFg
+    S33lgrCM4/ZjXYP2bpuE5v6dPq+hZvnmKkzcmT1C7YwK1XEyBan8flvIey/ur/4F
+    FnonsEl16TZvolSt9RH/19B7wfUHXXCyp9sG8iJGklZvteiJDG45A4eHhz8hxSzh
+    Th5w5guPynFv610HJ6wcNVz2MyJsmTyi8WuVxZs8wxrH9kEzXYD/GtPmcviGCexa
+    RTKYbgVn4WkJQYncyC0R1Gv3O8bEigX4SYKqIitMDnixjM6xU0URbnT1+8VdQH7Z
+    uhJVn1fzdRKZhWWlT+d+oqIiSrvd6nWhttoJrjrAQ7YWGAm2MBdGA/MxlYJ9FNDr
+    1kxuSODQNGtGnWZPieLvDkwotqZKzdOg7fimGRWiRv6yXo5ps3EJFuSU1fSCv2q2
+    XGdfc8ObLC7s3KZwkYjG82tjMZU+P5PifJh6N0PqpxUCxDqAfY+RzcTcM/SLhS79
+    yPzCZH8uWIrjaNaZmDSPC/z+bWWJKuu4Y1GCXCqkWvwuaGmYeEnXDOxGupUchkrM
+    +4R21WQ+eSaULd2PDzLClmYrplnpmbD7C7/ee6KDTl7JMdV25DM9a16JYOneRtMt
+    qlNgzj0Na4ZNMyRAHEl1SF8a72umGO2xLWebDoYf5VSSSZYtCNJdwt3lF7I8+adt
+    z0glMMmjR2L5c2HdlTUt5MgiY8+qkHlsL6M91c4diJoEXVh+8YpblAoogOHHBlQe
+    K1I1cqiDbVE/bmiERK+G4rqa0t7VQN6t2VWetWrGb+Ahw/iMKhpITWLWApA3k9EN
+    
+- Root
 
-```console
-$ bash tools/init
-```
+# Useful links
 
-> If you don't want to deploy your site on GitHub Pages, append option `--no-gh` at the end of the above command.
-{: .prompt-info }
+- 
 
-The above command will:
+# Lessons learned
 
-1. Remove the files in `_posts`{: .filepath} from your repository.
+- 
+- 
 
-2. If the option `--no-gh` is provided, the directory `.github`{: .filepath} will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension `.hook`{: .filepath} of `.github/workflows/pages-deploy.yml.hook`{: .filepath}, and then remove the other files and directories in the folder `.github`{: .filepath}.
+# Other Files
 
-3. Remove item `Gemfile.lock` from `.gitignore`{: .filepath}.
-
-4. Create a new commit to save the changes automatically.
-
-### Installing Dependencies
-
-Before running for the first time, go to the root directory of your site, and install dependencies as follows:
-
-```console
-$ bundle
-```
-
-## Usage
-
-### Configuration
-
-Update the variables of `_config.yml`{: .filepath} as needed. Some of them are typical options:
-
-- `url`
-- `avatar`
-- `timezone`
-- `lang`
-
-### Customizing Stylesheet
-
-If you need to customize the stylesheet, copy the theme's `assets/css/style.scss`{: .filepath} to the same path on your Jekyll site, and then add the custom style at the end of it.
-
-Starting with version `4.1.0`, if you want to overwrite the SASS variables defined in `_sass/addon/variables.scss`{: .filepath}, copy the main sass file `_sass/jekyll-theme-chirpy.scss`{: .filepath} into the `_sass`{: .filepath} directory in your site's source, then create a new file `_sass/variables-hook.scss`{: .filepath} and assign new value.
-
-### Customing Static Assets
-
-Static assets configuration was introduced in version `5.1.0`. The CDN of the static assets is defined by file `_data/assets/cross_origin.yml`{: .filepath }, and you can replace some of them according to the network conditions in the region where your website is published.
-
-Also, if you'd like to self-host the static assets, please refer to the [_chirpy-static-assets_](https://github.com/cotes2020/chirpy-static-assets#readme).
-
-### Running Local Server
-
-You may want to preview the site contents before publishing, so just run it by:
-
-```console
-$ bundle exec jekyll s
-```
-
-Or run the site on Docker with the following command:
-
-```console
-$ docker run -it --rm \
-    --volume="$PWD:/srv/jekyll" \
-    -p 4000:4000 jekyll/jekyll \
-    jekyll serve
-```
-
-After a while, the local service will be published at _<http://127.0.0.1:4000>_.
-
-## Deployment
-
-Before the deployment begins, check out the file `_config.yml`{: .filepath} and make sure the `url` is configured correctly. Furthermore, if you prefer the [**project site**](https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites) and don't use a custom domain, or you want to visit your website with a base URL on a web server other than **GitHub Pages**, remember to change the `baseurl` to your project name that starts with a slash, e.g, `/project-name`.
-
-Now you can choose ONE of the following methods to deploy your Jekyll site.
-
-### Deploy by Using GitHub Actions
-
-Ensure your Jekyll site has the file `.github/workflows/pages-deploy.yml`{: .filepath}. Otherwise, create a new one and fill in the contents of the [sample file][workflow], and the value of the `on.push.branches` should be the same as your repo's default branch name. And then rename your repository to `<GH_USERNAME>.github.io` on GitHub.
-
-Furthermore, if you have committed `Gemfile.lock`{: .filepath} to the repository and your local machine is not Linux, go the the root directory of your site and update the platform list:
-
-```console
-$ bundle lock --add-platform x86_64-linux
-```
-
-Now publish your Jekyll site:
-
-1. Browse to your repository on GitHub. Select the tab _Settings_, then click _Pages_ in the left navigation bar. Then, in the **Source** section (under _Build and deployment_), select [**GitHub Actions**][pages-workflow-src] from the dropdown menu.
-
-2. Push any commit to remote to trigger the GitHub Actions workflow. In the _Actions_ tab of your repository, you should see the workflow _Build and Deploy_ running. Once the build is complete and successful, the site should be deployed automatically.
-
-3. Visit your website at the address indicated by GitHub.
-
-### Manually Build and Deploy
-
-On self-hosted servers, you cannot enjoy the convenience of **GitHub Actions**. Therefore, you should build the site on your local machine and then upload the site files to the server.
-
-Go to the root of the source project, and build your site as follows:
-
-```console
-$ JEKYLL_ENV=production bundle exec jekyll b
-```
-
-Or build the site on Docker:
-
-```console
-$ docker run -it --rm \
-    --env JEKYLL_ENV=production \
-    --volume="$PWD:/srv/jekyll" \
-    jekyll/jekyll \
-    jekyll build
-```
-
-Unless you specified the output path, the generated site files will be placed in folder `_site`{: .filepath} of the project's root directory. Now you should upload those files to the target server.
-
-## Upgrading
-
-It depends on how you use the theme:
-
-- If you are using the theme gem (there will be `gem "jekyll-theme-chirpy"` in the `Gemfile`{: .filepath}), editing the `Gemfile`{: .filepath} and update the version number of the theme gem, for example:
-
-  ```diff
-  - gem "jekyll-theme-chirpy", "~> 3.2", ">= 3.2.1"
-  + gem "jekyll-theme-chirpy", "~> 3.3", ">= 3.3.0"
-  ```
-  {: .nolineno file="Gemfile" }
-
-  And then execute the following command:
-
-  ```console
-  $ bundle update jekyll-theme-chirpy
-  ```
-
-  As the version upgrades, the critical files (for details, see the [Startup Template][starter]) and configuration options will change. Please refer to the [Upgrade Guide](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide) to keep your repo's files in sync with the latest version of the theme.
-
-- If you forked from the source project (there will be `gemspec` in the `Gemfile`{: .filepath} of your site), then merge the [latest upstream tags][latest-tag] into your Jekyll site to complete the upgrade.
-The merge is likely to conflict with your local modifications. Please be patient and careful to resolve these conflicts.
-
-[starter]: https://github.com/cotes2020/chirpy-starter
-[use-starter]: https://github.com/cotes2020/chirpy-starter/generate
-[workflow]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook
-[pages-workflow-src]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
-[latest-tag]: https://github.com/cotes2020/jekyll-theme-chirpy/tags
